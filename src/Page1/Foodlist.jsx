@@ -26,18 +26,18 @@ function Foodlist({ food, showFood, setShowFood }) {
         }))
     }
 
-    // Added function to go back to category view (just in case lol)
+    // Added function to go back to category view (just in case, but i commented it out in the UI)
     const handleBackToCategories = () => {
         setShowFood(false);
     }
 
     return (
         <div>
-            {showFood && (
+            {/* {showFood && (
                 <button onClick={handleBackToCategories} style={{marginBottom: '20px'}}>
                     ← Back to Categories
                 </button>
-            )}
+            )} */}
             
             {!showFood ? (
                 <div id='food-cartegory'>
