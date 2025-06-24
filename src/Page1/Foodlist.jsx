@@ -16,12 +16,12 @@ function Foodlist({ food, showFood}) {
 
 
     function addItems(){
-        setAddItem(addItem + 1)
+        setAddItem(prev =>(prev + 1))
     }
 
      function removeItems(){
         if(addItem > limit){
-             setAddItem(addItem - 1)
+             setAddItem( prev =>(prev - 1))
         }
         
     }

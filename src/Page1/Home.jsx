@@ -10,6 +10,11 @@ function Home() {
     const [showFood, setShowFood] = useState(false)
 
 
+    function displayFood(){
+        setShowFood(true)
+    }
+
+
     return (
         <div className="Home">
             <div className="Header">
@@ -31,7 +36,7 @@ function Home() {
                 {menu_list.map((item, index) => {
                     return (
                         <div className='menu-list-items' key={index}>
-                            <img src={item.menu_image} alt="" onClick={() => setFood(item.menu_name)}  onDoubleClick={()=>setShowFood(true)}/>
+                            <img src={item.menu_image} alt="" onClick={() => setFood(item.menu_name)}  onDoubleClick={()=>displayFood()}/>
                             <p>{item.menu_name}</p>
                         </div>
                     )
