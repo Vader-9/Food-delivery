@@ -4,11 +4,18 @@ import { useState } from 'react';
 import Foodlist from './Foodlist';
 
 function Home() {
-
-
     const [food, setFood] = useState('')
     const [showFood, setShowFood] = useState(false)
 
+    const handleImageClick = (menuName) => {
+        setFood(menuName);
+        setShowFood(false); 
+    }
+
+    const handleImageDoubleClick = (menuName) => {
+        setFood(menuName);
+        setShowFood(true); 
+    }
 
     function displayFood(){
         setShowFood(true)
@@ -30,13 +37,20 @@ function Home() {
             <div className="Explore-menu">
                 <h1>Explore our menu</h1>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam architecto velit aperiam, magni iste, illo, nesciunt consectetur id provident dolor dignissimos. Labore debitis </p>
-
             </div>
+            
             <div className="menu-list">
                 {menu_list.map((item, index) => {
                     return (
                         <div className='menu-list-items' key={index}>
-                            <img src={item.menu_image} alt="" onClick={() => setFood(item.menu_name)}  onDoubleClick={()=>displayFood()}/>
+
+                            <img 
+                                src={item.menu_image} 
+                                alt="" 
+                                onClick={() => handleImageClick(item.menu_name)}  
+                                onDoubleClick={() => handleImageDoubleClick(item.menu_name)}
+                            />
+
                             <p>{item.menu_name}</p>
                         </div>
                     )
@@ -55,11 +69,6 @@ function Home() {
                     <img src={assets.app_store} alt="" />
                 </div>
             </div>
-
-            
-
-
-
         </div>
     )
 }
