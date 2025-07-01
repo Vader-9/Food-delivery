@@ -3,9 +3,10 @@ import './NavBar.css'
 import { assets } from './assets/assets'
 
 
-function NavBar() {
+function NavBar({setCard}) {
 
     const [nav, setNav] = useState('')
+    
 
     return (
         <div className='NavBar'>
@@ -17,8 +18,8 @@ function NavBar() {
               <li onClick={()=>setNav('contact')} className={nav==="contact" ? 'active': ''}>contact</li>
             </ul>
             <div className="Nav-cards">
-                <img src={assets.search_icon} alt="" />
-                <img src={assets.basket_icon} alt="" />
+                <img src={assets.search_icon} alt=""  />
+                <img src={assets.basket_icon} alt="" onClick={()=>setCard(true)}  onDoubleClick={()=>setCard(false)}/>
                 <button>Sign in</button>
             </div>
         </div>

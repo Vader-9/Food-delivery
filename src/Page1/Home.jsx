@@ -3,7 +3,7 @@ import { assets, menu_list } from '../assets/assets';
 import { useState } from 'react';
 import Foodlist from './Foodlist';
 
-function Home() {
+function Home({setCardItems}) {
     const [food, setFood] = useState('')
     const [showFood, setShowFood] = useState(false)
 
@@ -13,7 +13,7 @@ function Home() {
     }
 
     const handleImageDoubleClick = (menuName) => {
-        setFood(menuName);
+        setFood(menuName); // i dont think we need this line
         setShowFood(true); 
     }
 
@@ -58,7 +58,7 @@ function Home() {
             </div>
             
             <div className="food-cartegory">
-                 <Foodlist food={food} showFood={showFood}></Foodlist>
+                 <Foodlist food={food} showFood={showFood} setCardItems={setCardItems}></Foodlist>
             </div>
 
             <div className="lastpart">

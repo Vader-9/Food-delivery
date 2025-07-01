@@ -2,27 +2,40 @@ import { assets, food_list } from '../assets/assets';
 import './Foodlist.css'
 import { useState } from 'react';
 
-function Foodlist({ food, showFood, setShowFood }) {
+function Foodlist({ food, showFood, setShowFood,setCardItems }) {
     const foodfilter = food_list.filter((foods) => {
         return food === foods.category
     })
     
-    console.log(foodfilter)
+
+
+   
+
     
     // Used an object state to track quantities for each food item
     const [itemQuantities, setItemQuantities] = useState({})
 
-    function addItems(foodId) {
+    function addItems(food) {
         setItemQuantities(prev => ({
             ...prev,
-            [foodId]: (prev[foodId] || 0) + 1
+            [food._id]: (prev[food._id] || 0) + 1
+        }))
+
+        setCardItems(prev => ({
+            ...prev,
+            [food._id]: { count:(prev[food._id] ? prev[food._id].count : 0)+ 1, item: food }
         }))
     }
 
-    function removeItems(foodId) {
+    function removeItems(food) {
         setItemQuantities(prev => ({
             ...prev,
-            [foodId]: Math.max(0, (prev[foodId] || 0) - 1)
+            [food._id]: Math.max(0, (prev[food._id] || 0) - 1)
+        }))
+
+         setCardItems(prev => ({
+            ...prev,
+            [food._id]: { count:Math.max(0, ( prev[food._id] ? prev[food._id].count : 0) - 1), item: food }
         }))
 
     }
@@ -31,6 +44,9 @@ function Foodlist({ food, showFood, setShowFood }) {
     const handleBackToCategories = () => {
         setShowFood(false);
     }
+
+    
+    
 
     return (
         <div>
@@ -48,12 +64,11 @@ function Foodlist({ food, showFood, setShowFood }) {
                             <div key={foodItem._id} className='foodlist-folder'>
                                 <div className="foodlist-img">
                                     <img src={foodItem.image} alt="" />
-                                    <div className="foodlist-addicon">
-                                        <div className="adding-items">
+                                     <div className="adding-items">
                                             <img 
                                                 src={assets.add_icon_white} 
                                                 alt="" 
-                                                onClick={() => addItems(foodItem._id)} 
+                                                onClick={() => addItems(foodItem)} 
                                             />
                                             {quantity < 1 ? "" : (
                                                 <>
@@ -61,11 +76,13 @@ function Foodlist({ food, showFood, setShowFood }) {
                                                     <img 
                                                         src={assets.remove_icon_red} 
                                                         alt="" 
-                                                        onClick={() => removeItems(foodItem._id)} 
+                                                        onClick={() => removeItems(foodItem)} 
                                                     />
                                                 </>
                                             )}
                                         </div>
+                                    <div className="foodlist-addicon">
+                                       
                                     </div>
                                 </div>
                                 <div className="foodlist-content">
@@ -124,5 +141,6 @@ function Foodlist({ food, showFood, setShowFood }) {
         </div>
     )
 }
+
 
 export default Foodlist
