@@ -1,0 +1,61 @@
+.DeliveryInfo{
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.firstandlastname{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+}
+.firstandlastname input{
+    width: 50%;
+    padding: 10px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid;
+    
+}
+
+.longspace{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    margin: 10px;
+}
+.longspace input{
+     width: 100%;
+    padding: 10px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid;
+}
+
+.two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+}
+.two input{
+    width: 50%;
+    padding: 10px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid;
+   
+}
+#lastinput{
+     width: 100%;
+    padding: 10px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid;
+}
