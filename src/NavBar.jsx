@@ -3,7 +3,7 @@ import './NavBar.css'
 import { assets } from './assets/assets'
 
 
-function NavBar({setCard}) {
+function NavBar({setCard, setLogin}) {
 
     const [nav, setNav] = useState('')
     
@@ -20,7 +20,7 @@ function NavBar({setCard}) {
             <div className="Nav-cards">
                 <img src={assets.search_icon} alt=""  />
                 <img src={assets.basket_icon} alt="" onClick={()=>setCard(true)}  onDoubleClick={()=>setCard(false)}/>
-                <button>Sign in</button>
+                <button onClick={()=>setLogin(true)}>Sign in</button>
             </div>
         </div>
     )
